@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import BBC,HackerNews
-from rest_framework.fields import CharField, URLField
+from rest_framework.fields import CharField, URLField, IntegerField
 
 class BbcSerializer(serializers.ModelSerializer):
     title = CharField()

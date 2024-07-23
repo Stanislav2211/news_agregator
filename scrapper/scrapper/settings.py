@@ -9,19 +9,10 @@
 import sys
 import os
 import django
-sys.path.append('C:/Users/Admin/Desktop/news_aggregator/news_agregator')
+sys.path.append('C:/Users/Admin/Desktop/news_aggregator')
 os.environ['DJANGO_SETTINGS_MODULE'] = 'news_agregator.settings'
 django.setup()
 
-
-DATABASE = {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'crapy_db',
-    'USER': 'tanislaw',
-    'PASSWORD': 'admin123',
-    'HOST': 'localhost',
-    'PORT': '5432'
-}
 
 BOT_NAME = "scrapper"
 REQUEST_FINGERPRINTER_IMPLEMENTATION = 'scrapy_httpcache'
@@ -78,14 +69,10 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'scrapper.pipelines.BbcPipeline': 300,
-    'scrapper.pipeline.HackerNewsPipeline': 400
+    'scrapper.pipelines.HackerNewsPipeline': 300,
+    'scrapper.pipelines.BbcPipeline': 400
 }
-''''
-ITEM_PIPELINES = {
-    "scrapper.pipelines.ScrapperPipeline": 300,
-}
-'''
+
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
@@ -108,7 +95,13 @@ ITEM_PIPELINES = {
 #HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"
 
 # Set settings whose default value is deprecated to a future-proof value
-REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
+REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.6"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
 LOG_LEVEL = 'DEBUG'
+SPIDER_MIDDLEWARES = {
+    'scrapy_django_dashboard.middlewares.DjangoDBMiddleware': 543,
+}
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy_django_dashboard.middlewares.DjangoDBMiddleware': 543,
+}

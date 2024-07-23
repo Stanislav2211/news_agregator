@@ -7,14 +7,7 @@
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
 from news.models import BBC,HackerNews
-'''
-class ScrapperPipeline(BaseItemPipeline):
-    @sync_to_async
-    def process_item(self, item, spider):
-        item.save()
-        return item
 
-'''
 class BbcPipeline(object):
     def process_item(self, item, spider):
         if spider.name == 'bbcspider':

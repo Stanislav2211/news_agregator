@@ -1,5 +1,7 @@
 import scrapy
 from ..items import BbcItem, HackerNewsItem
+from news.models import BBC, HackerNews
+import re
 
 class BbcSpider(scrapy.Spider):
     name = 'bbcspider'
@@ -39,4 +41,5 @@ class HackerNewsSpider(scrapy.Spider):
             item['url'] = element.xpath(".//td[@class='title']/span[@class='titleline']/a/@href").get()
             item['author'] = element.xpath(".//td[@class='title']/span[@class='titleline']/a/text()").get()
             yield item
-
+        
+        

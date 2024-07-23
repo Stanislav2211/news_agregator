@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'scrapy',
     'scrapper',
     'rest_framework',
     'news',
@@ -86,7 +87,7 @@ DATABASES = {
     }
 }
 
-SCRAPY_SETTINGS_MODULE = 'scrapy_app.settings'
+SCRAPY_SETTINGS_MODULE = 'scrapper.settings'
 
 
 # Password validation
@@ -136,4 +137,4 @@ REST_FRAMEWORK = {
 }
 
 SPIDER_MODULES = ['scrapper.spiders']
-NEWSSPIDER_MODLE = 'scrapper.spiders'
+NEWSSPIDER_MODULE = 'scrapper.spiders'

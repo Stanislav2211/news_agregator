@@ -10,6 +10,9 @@ class BBC(models.Model):
 
 class HackerNews(models.Model):
     title = models.CharField(max_length=255)
-    points = models.IntegerField()
+    points = models.CharField()
     author = models.CharField(max_length=255)
     url = models.URLField()
+
+    class Meta:
+        verbose_name_plural = 'HackerNews'
